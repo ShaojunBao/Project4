@@ -1,16 +1,39 @@
 .NewOrderPage {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1.6fr 3.5fr 3fr;
-  grid-template-rows: 1fr;
-  background-color: var(--white);
-  border-radius: 2vmin;
+  display: flex;
+  height: 100vh;
 }
 
-.NewOrderPage aside {
+.sidebar {
+  width: 20%;
+  background-color: #f7f7f7;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin: 3vmin 2vmin;
+}
+
+.sidebar-top {
+  flex: 1;
+}
+
+.sidebar-bottom {
+  margin-bottom: 20px;
+}
+
+.content {
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
 }

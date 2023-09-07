@@ -30,22 +30,28 @@ export default function NewOrderPage() {
 
    
 
-    return (
-          <main className="NewOrderPage">
-            <aside>
-              <Logo />
-              <CategoryList
-                categories={categoriesRef.current}
-                activeCat={activeCat}
-                setActiveCat={setActiveCat}
-              />
-              <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
-              <UserLogOut user={user} setUser={setUser} />
-            </aside>
-            <MenuList
-              menuItems={menuItems.filter(item => item.category.name === activeCat)}
-            />
-            <OrderDetail />
-          </main>
-    );
+  return (
+    <main className="NewOrderPage">
+      <aside className="sidebar">
+        <div className="sidebar-top">
+          <Logo />
+          <CategoryList
+            categories={categoriesRef.current}
+            activeCat={activeCat}
+            setActiveCat={setActiveCat}
+          />
+          <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
+        </div>
+        <div className="sidebar-bottom">
+          <UserLogOut user={user} setUser={setUser} />
+        </div>
+      </aside>
+      <div className="content">
+        <MenuList
+          menuItems={menuItems.filter(item => item.category.name === activeCat)}
+        />
+        <OrderDetail />
+      </div>
+    </main>
+  );
 }

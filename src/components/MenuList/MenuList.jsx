@@ -9,8 +9,8 @@ export default function MenuList({ menuItems }) {
     />
   );
   return (
-    <main className="MenuList">
+    <div className="MenuList">
       {items}
-    </main>
+    </div>
   );
 }
