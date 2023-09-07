@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import {useState, useEffect, useRef} from 'react';
 import * as itemsAPI from '../../utilities/items-api';
-// Add the following imports
 import './NewOrderPage.css';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
 import MenuList from '../../components/MenuList/MenuList';
 import CategoryList from '../../components/CategoryList/CategoryList';
@@ -11,17 +10,20 @@ import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
 
 
+
 export default function NewOrderPage() {
-  const [menuItems, setMenuItems] = useState([])
+  const [menuItems, setMenuItems] = useState([]);
+  const [activeCat, setActiveCat] = useState([]);
+  const [user, setUser] = useState([]);
+
   const categoriesRef = useRef([]);
-  const [activeCat, setActiveCat] = useState('');
+
 
   useEffect(function() {
     async function getItems() {
       const items = await itemsAPI.getAll();
       categoriesRef.current = [...new Set(items.map(item => item.category.name))];
       setMenuItems(items);
-      setActiveCat(categoriesRef.current[0]);
     }
     getItems();
   }, []);
@@ -29,21 +31,21 @@ export default function NewOrderPage() {
    
 
     return (
-      <main className="NewOrderPage">
-  <aside>
-    <Logo />
-    <CategoryList
-      categories={categoriesRef.current}
-      activeCat={activeCat}
-      setActiveCat={setActiveCat}
-    />
-    <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
-    <UserLogOut user={user} setUser={setUser} />
-  </aside>
-  <MenuList
-    menuItems={menuItems.filter(item => item.category.name === activeCat)}
-  />
-  <OrderDetail />
-</main>
+          <main className="NewOrderPage">
+            <aside>
+              <Logo />
+              <CategoryList
+                categories={categoriesRef.current}
+                activeCat={activeCat}
+                setActiveCat={setActiveCat}
+              />
+              <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
+              <UserLogOut user={user} setUser={setUser} />
+            </aside>
+            <MenuList
+              menuItems={menuItems.filter(item => item.category.name === activeCat)}
+            />
+            <OrderDetail />
+          </main>
     );
 }

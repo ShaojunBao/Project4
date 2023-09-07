@@ -13,7 +13,7 @@ export default function LogInForm({ setUser }) {
 
             const user = await logIn(formData);
             if (user) {
-                setUser(user.name);
+                setUser(user);
             } else {
                 setError('Login Failed - Check Credentials');
             }
