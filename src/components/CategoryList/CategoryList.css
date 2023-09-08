@@ -1,15 +1,11 @@
 .CategoryList {
   list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 .CategoryList li {
-  padding: 10px 15px;
-  margin-bottom: 5px;
+  padding: 10px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 
 .CategoryList li:hover {
@@ -17,6 +13,6 @@
 }
 
 .CategoryList li.active {
-  background-color: #007BFF;
-  color: white;
+  font-weight: bold;
+  background-color: #e0e0e0;
 }

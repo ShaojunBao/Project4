@@ -1,30 +1,61 @@
 .OrderDetail {
-  padding: 20px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .section-heading {
-  font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-.order-info {
-  margin-bottom: 10px;
+.section-heading h2 {
+  color: #333;
+  font-size: 1.5em;
 }
 
-.order-info div {
-  margin: 5px 0;
-}
-
-.items-list {
+.items-section ul {
   list-style-type: none;
   padding: 0;
 }
 
-.items-list li {
-  margin: 5px 0;
+.items-section .item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.total-amount {
-  margin-top: 10px;
+.items-section .item .emoji {
+  font-size: 2em;
+  margin-right: 10px;
+}
+
+.items-section .item .item-detail {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.items-section .item .item-detail .item-name {
+  color: #333;
+}
+
+.items-section .item .item-detail .item-price {
+  color: #555;
+}
+
+.total-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 1.2em;
   font-weight: bold;
+}
+
+.empty-order {
+  text-align: center;
+  color: #999;
+  margin-top: 20px;
 }

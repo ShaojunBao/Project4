@@ -1,39 +1,65 @@
 .NewOrderPage {
   display: flex;
   height: 100vh;
+  background-color: #f0f0f0;
 }
 
 .sidebar {
-  width: 20%;
-  background-color: #f7f7f7;
+  width: 250px;
+  background-color: #ecf0f1;
   padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .sidebar-top {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .sidebar-bottom {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .content {
-  width: 80%;
+  flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+
 .button {
-  display: inline-block;
   padding: 10px 20px;
   background-color: #007BFF;
   color: #fff;
+  border: none;
   border-radius: 5px;
-  text-decoration: none;
-  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .NewOrderPage {
+    flex-direction: column;
+  }
+
+  .sidebar, .content {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .MenuList {
+    flex-direction: column;
+  }
 }

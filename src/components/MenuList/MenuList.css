@@ -1,6 +1,19 @@
 .MenuList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 20px;
+}
+
+.MenuList .menuItem {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.MenuList .menuItem:hover {
+  transform: scale(1.05);
 }
