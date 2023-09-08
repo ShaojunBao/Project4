@@ -8,16 +8,13 @@ import CategoryList from '../../components/CategoryList/CategoryList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
 
-
-
-
 export default function NewOrderPage() {
   const [menuItems, setMenuItems] = useState([]);
   const [activeCat, setActiveCat] = useState([]);
+  const [orderItems, setOrderItems] = useState([]);
   const [user, setUser] = useState([]);
 
   const categoriesRef = useRef([]);
-
 
   useEffect(function() {
     async function getItems() {
@@ -28,7 +25,9 @@ export default function NewOrderPage() {
     getItems();
   }, []);
 
-   
+  const handleAddItemToOrder = (item) => {
+    setOrderItems(prevOrderItems => [...prevOrderItems, item]);
+  };
 
   return (
     <main className="NewOrderPage">
@@ -49,8 +48,9 @@ export default function NewOrderPage() {
       <div className="content">
         <MenuList
           menuItems={menuItems.filter(item => item.category.name === activeCat)}
+          onAddItemToOrder={handleAddItemToOrder}
         />
-        <OrderDetail />
+        <OrderDetail orderItems={orderItems} />
       </div>
     </main>
   );

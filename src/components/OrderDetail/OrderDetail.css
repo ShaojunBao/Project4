@@ -1,47 +1,30 @@
 .OrderDetail {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 3vmin;
-  font-size: 2vmin;
-  color: var(--text-light);
+  padding: 20px;
 }
 
-.OrderDetail .section-heading {
-  width: 100%
+.section-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.OrderDetail .line-item-container {
-  margin-top: 3vmin;
-  justify-content: flex-start;
-  height: calc(100vh - 18vmin);
-  width: 100%;
+.order-info {
+  margin-bottom: 10px;
 }
 
-.OrderDetail .total {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 18.35vw 5.75vw 5.25vw;
-  padding: 1vmin 0;
-  color: var(--text-light);
-  border-top: .1vmin solid var(--tan-3);
+.order-info div {
+  margin: 5px 0;
 }
 
-.OrderDetail .total span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5vw;
-  color: var(--text-dark);
+.items-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-.OrderDetail .total span.right {
-  display: flex;
-  justify-content: flex-end;
+.items-list li {
+  margin: 5px 0;
 }
 
-.OrderDetail .hungry {
-  position: absolute;
-  top: 50vh;
-  font-size: 2vmin;
+.total-amount {
+  margin-top: 10px;
+  font-weight: bold;
 }

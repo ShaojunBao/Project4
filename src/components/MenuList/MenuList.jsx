@@ -1,16 +1,17 @@
-import './MenuList.css';
+import React from 'react';
 import MenuListItem from '../MenuListItem/MenuListItem';
+import './MenuList.css';
 
-export default function MenuList({ menuItems }) {
-  const items = menuItems.map(item =>
-    <MenuListItem
-      key={item._id}
-      menuItem={item}
-    />
-  );
+export default function MenuList({ menuItems, onAddItemToOrder }) {
   return (
-    <div className="MenuList">
-      {items}
+    <div>
+      {menuItems.map((menuItem, idx) => (
+        <MenuListItem 
+          key={idx} 
+          menuItem={menuItem} 
+          onAddItemToOrder={() => onAddItemToOrder(menuItem)}
+        />
+      ))}
     </div>
   );
 }
