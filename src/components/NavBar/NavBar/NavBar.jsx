@@ -33,8 +33,7 @@ export default function NavBar({ user, setUser }) {
             </>
           ) : (
             <>
-              <Nav.Link as={Link} to="/login">Login</Nav.Link>
-              <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+              <Nav.Link as={Link} to="/auth">Login/Signup</Nav.Link>
             </>
           )}
         </Nav>

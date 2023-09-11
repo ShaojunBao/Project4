@@ -5,8 +5,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar/NavBar';
-import LogInForm from '../../components/LogInForm/LogInForm';
-import SignUpForm from '../../components/NavBar/SignUpForm/SignUpForm';
+import HomePage from '../HomePage/HomePage';
 import { getUser } from '../../utilities/users-service';
 
 export default function App() {
@@ -18,12 +17,19 @@ export default function App() {
       {user ? 
         <>
           <Routes>
+            <Route path="/" exact component={HomePage} />
             <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
           </Routes>
         </>
        : 
-       <AuthPage setUser={setUser} />
+       <>
+       <Routes>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/auth" element={<AuthPage setUser={setUser}/>}/>
+        <Route path="/orders/new" element={<NewOrderPage />} />
+       </Routes>
+       </>
       }
     </main>
   );
