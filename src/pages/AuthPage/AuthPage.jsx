@@ -1,25 +1,19 @@
-import SignUpForm from "../../components/NavBar/SignUpForm/SignUpForm";
-import LogInForm from "../../components/LogInForm/LogInForm";
-import React, {useState} from 'react';
+import { useState } from 'react';
+import './AuthPage.css';
+import LogInForm from '../../components/LogInForm/LogInForm';
+import SignUpForm from '../../components/NavBar/SignUpForm/SignUpForm';
+import Logo from '../../components/Logo/Logo';
 
-export default function AuthPage( {setUser} ) {
+export default function AuthPage({ setUser }) {
+  const [showLogin, setShowLogin] = useState(true);
 
-  const [signUp, setSignUp] = useState(true);
-  const toggleForm = () => {
-    setSignUp(!signUp);
-  }
   return (
-    <main>
-    <h1>AuthPage</h1>
-    {signUp ? <LogInForm setUser={setUser} />:
-    <SignUpForm setUser={setUser} /> 
-      
-    }
-
-    <button onClick={toggleForm}>
-      {signUp ? 'SignUp':'LogIn'}
-    </button>
-
+    <main className="AuthPage">
+      <div>
+        <Logo />
+        <h3 onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3>
+      </div>
+      {showLogin ? <LogInForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
     </main>
   );
 }

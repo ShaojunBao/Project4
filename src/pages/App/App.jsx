@@ -15,19 +15,16 @@ export default function App() {
   return (
     <main className="App">
       <NavBar user={user} setUser={setUser} />
-      {user ? (
+      {user ? 
         <>
           <Routes>
             <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
           </Routes>
         </>
-      ) : (
-        <Routes>   
-          <Route path="/login" element={<LogInForm setUser={setUser} />} />
-          <Route path="/signup" element={<SignUpForm setUser={setUser} />} />
-        </Routes>
-      )}
+       : 
+       <AuthPage setUser={setUser} />
+      }
     </main>
   );
 }
