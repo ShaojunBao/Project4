@@ -9,7 +9,8 @@ const orderSchema = new Schema({
     quantity: { type: Number, required: true }
   }],
   totalAmount: { type: Number, required: true },
-  orderDate: { type: Date, default: Date.now }
+  orderDate: { type: Date, default: Date.now },
+  user:{ type: Schema.Types.ObjectId, ref: 'User'}
 }, {
   timestamps: true
 });

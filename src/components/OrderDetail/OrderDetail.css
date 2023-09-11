@@ -1,18 +1,11 @@
 .OrderDetail {
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
 }
 
 .section-heading {
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.section-heading h2 {
-  color: #333;
-  font-size: 1.5em;
+  margin-bottom: 20px;
 }
 
 .items-section ul {
@@ -20,42 +13,39 @@
   padding: 0;
 }
 
-.items-section .item {
+.item {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.items-section .item .emoji {
-  font-size: 2em;
-  margin-right: 10px;
-}
-
-.items-section .item .item-detail {
-  flex-grow: 1;
-  display: flex;
   justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
-.items-section .item .item-detail .item-name {
-  color: #333;
+.item .emoji {
+  font-size: 24px;
 }
 
-.items-section .item .item-detail .item-price {
-  color: #555;
+.item-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-controls button {
+  padding: 5px;
 }
 
 .total-section {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
-  font-size: 1.2em;
-  font-weight: bold;
+  margin-top: 20px;
 }
 
 .empty-order {
   text-align: center;
-  color: #999;
-  margin-top: 20px;
 }

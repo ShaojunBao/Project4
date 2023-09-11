@@ -1,15 +1,37 @@
-import { checkToken } from "../../utilities/users-service";
+import React, { useEffect, useState } from 'react';
+import { getAll } from '../../utilities/orders-api'
 
 export default function OrderHistoryPage() {
+  const [orders, setOrders] = useState([]);
 
-  async function handleCheckToken(){
-      const expDate = await checkToken();
-      console.log(expDate);
-  }
+  useEffect(() => {
+    async function fetchOrders() {
+      try {
+        const data = await getAll();
+        console.log(data);
+        setOrders(data);
+      } catch (error) {
+        console.error('Failed to fetch orders', error);
+      }
+    }
+    fetchOrders();
+  }, []);
+
   return (
-    <>
-    <h1>OrderHistoryPage</h1>
-    <button onClick={handleCheckToken}>Check When My Login Expires</button>
-    </>
+    <div>
+      {orders.map((order) => (
+        <div key={order._id}>
+          <h2>{order.customerName}</h2>
+          {order.items.map((item, index) => (
+            <div key={index}>
+              <p>Item: {item.item.name}</p>
+              <p>Price: {item.item.price}</p>
+              <p>Quantity: {item.quantity}</p>
+            </div>
+          ))}
+          <p>Total Amount: {order.totalAmount}</p>
+        </div>
+      ))}
+    </div>
   );
 }

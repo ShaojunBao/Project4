@@ -7,11 +7,11 @@ export default function MenuList({ menuItems, onAddItemToOrder }) {
     <div>
       {menuItems.map((menuItem, idx) => (
         <MenuListItem 
-          key={idx} 
+          key={menuItem.id || idx} 
           menuItem={menuItem} 
           onAddItemToOrder={() => onAddItemToOrder(menuItem)}
         />
       ))}
     </div>
   );
-}
+};

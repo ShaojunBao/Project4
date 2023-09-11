@@ -1,7 +1,7 @@
 import './OrderDetail.css';
 
-export default function OrderDetail({ orderItems = [] }) {
-  const totalAmount = orderItems.reduce((acc, item) => acc + item.price, 0);
+export default function OrderDetail({ orderItems = [], onItemQuantityChange, onItemRemove }) {
+  const totalAmount = orderItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
 
   return (
     <div className="OrderDetail">
@@ -13,11 +13,17 @@ export default function OrderDetail({ orderItems = [] }) {
           <div className="items-section">
             <ul>
               {orderItems.map((item, idx) => (
-                <li key={idx} className="item">
+                <li key={item._id || idx} className="item">
                   <div className="emoji">{item.emoji}</div>
                   <div className="item-detail">
                     <span className="item-name">{item.name}</span>
-                    <span className="item-price">${item.price.toFixed(2)}</span>
+                    <span className="item-price">${(item.price * item.quantity).toFixed(2)}</span>
+                  </div>
+                  <div className="item-controls">
+                    <button onClick={(e) => { e.stopPropagation(); onItemQuantityChange(idx, -1); }}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={(e) => { e.stopPropagation(); onItemQuantityChange(idx, 1); }}>+</button>
+                    <button onClick={(e) => { e.stopPropagation(); onItemRemove(idx); }}>Remove</button>
                   </div>
                 </li>
               ))}
@@ -25,7 +31,7 @@ export default function OrderDetail({ orderItems = [] }) {
           </div>
           <div className="total-section">
             <h3>Total:</h3>
-            <span>${totalAmount.toFixed(2)}</span>
+            <span>${totalAmount}</span>
           </div>
         </div>
       ) : (

@@ -7,7 +7,7 @@ export default function MenuListItem({ menuItem, onAddItemToOrder }) {
       <div className="name">{menuItem.name}</div>
       <div className="buy">
         <span>${menuItem.price.toFixed(2)}</span>
-        <button className="btn-sm" onClick={onAddItemToOrder}>
+        <button className="btn-sm" onClick={() => onAddItemToOrder()}>
           ADD
         </button>
       </div>

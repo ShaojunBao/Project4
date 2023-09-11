@@ -23,7 +23,7 @@ export default function App() {
           </Routes>
         </>
       ) : (
-        <Routes>
+        <Routes>   
           <Route path="/login" element={<LogInForm setUser={setUser} />} />
           <Route path="/signup" element={<SignUpForm setUser={setUser} />} />
         </Routes>

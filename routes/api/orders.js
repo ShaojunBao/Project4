@@ -10,5 +10,7 @@ router.get('/:id', ordersCtrl.show);
 router.post('/', ordersCtrl.create);
 //DELETE /api/orders/:id
 router.delete('/:id', ordersCtrl.delete);
+router.put('/:id', ordersCtrl.update);
+
 
 module.exports = router;

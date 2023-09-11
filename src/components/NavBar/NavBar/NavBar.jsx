@@ -1,8 +1,8 @@
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import * as userService from '../../../utilities/users-service';
 import './NavBar.css';  
-import logo from '../../../images/restaurant.png'
-
+import logo from '../../../images/restaurant.png';
 
 export default function NavBar({ user, setUser }) {
 
@@ -12,29 +12,33 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav className="navbar">
-      <div className="logo-section">
-       
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand as={Link} to="/">
         <img src={logo} alt="App Logo" className="logo" />
-      </div>
-      <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/orders/new">New Order</Link>
-        <Link to="/orders">Order History</Link>
-      </div>
-      <div className="user-info">
-        {user ? (
-          <>
-            <span>Welcome, {user.name}</span>
-            <Link to="/" onClick={handleLogOut}>Logout</Link>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
-        )}
-      </div>
-    </nav>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/orders/new">New Order</Nav.Link>
+          <Nav.Link as={Link} to="/orders">Order History</Nav.Link>
+        </Nav>
+        <Nav>
+          {user ? (
+            <>
+              <Navbar.Text>
+                Welcome, {user.name}
+              </Navbar.Text>
+              <Nav.Link as={Link} to="/" onClick={handleLogOut}>Logout</Nav.Link>
+            </>
+          ) : (
+            <>
+              <Nav.Link as={Link} to="/login">Login</Nav.Link>
+              <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+            </>
+          )}
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }

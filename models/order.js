@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('./item');
+require('./item'); 
 const orderSchema = require('./orderSchema.js');
 
-module.exports = mongoose.model('Order', OrderSchema);
+module.exports = mongoose.model('Order', orderSchema); 

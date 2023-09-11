@@ -5,17 +5,18 @@ module.exports = {
   show,
   create,
   delete: deleteOrder,
+  update
 };
 
 async function index(req, res) {
-    try {
-      const orders = await Order.find({}).populate('items.item').exec();
-      res.json(orders);
-    } catch (error) {
-      res.json({ error: error.message });
-    }
+  try {
+    const orders = await Order.find({ user: req.user._id }).populate('items.item').exec();
+    res.json(orders);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
 }
-  
+
 async function show(req, res) {
     try {
       const order = await Order.findById(req.params.id).populate('items.item').exec();
@@ -31,7 +32,7 @@ async function show(req, res) {
 
 async function create(req, res) {
   try {
-    const order = await Order.create(req.body);
+    const order = await Order.create({...req.body, user: req.user._id});
     res.json(order);
   } catch (error) {
     res.json({ error: error.message });
@@ -44,5 +45,24 @@ async function deleteOrder(req, res) {
     res.json(deletedOrder);
   } catch (error) {
     res.json({ error: error.message });
+  }
+}
+
+async function update(req, res) {
+  try {
+    const updatedOrder = await Order.findByIdAndUpdate(
+      req.params.id, 
+      req.body, 
+      { new: true, runValidators: true }
+    ).populate('items.item').exec();
+
+    if (!updatedOrder) {
+      res.status(404).json({ error: 'Order not found' });
+      return;
+    }
+
+    res.json(updatedOrder);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 }
