@@ -1,12 +1,13 @@
 import './CategoryList.css';
 
-export default function CategoryList({ categories, activeCat, setActiveCat }) {
-  const cats = categories.map(cat =>
+export default function CategoryList({ categories, activeCat, setActiveCat, showImages }) {
+  const cats = categories.map((cat) =>
     <li
-      key={cat}
+      key={cat} 
       className={cat === activeCat ? 'active' : ''}
       onClick={() => setActiveCat(cat)}
     >
+      {showImages && <img src={`/images/${cat}.png`} alt={cat} className="category-image" />}
       {cat}
     </li>
   );

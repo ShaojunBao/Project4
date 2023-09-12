@@ -1,18 +1,33 @@
 .CategoryList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   list-style-type: none;
   padding: 0;
+  margin: 0;
+  justify-content: center; 
 }
 
 .CategoryList li {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 150px; 
   padding: 10px;
+  background-color: #f0f0f0; 
+  border-radius: 10px; 
+  text-align: center;
   cursor: pointer;
 }
 
-.CategoryList li:hover {
-  background-color: #f0f0f0;
+.CategoryList li.active {
+  background-color: #d0d0d0; 
 }
 
-.CategoryList li.active {
-  font-weight: bold;
-  background-color: #e0e0e0;
+.category-image {
+  width: 100px; 
+  height: 100px; 
+  object-fit: cover;
+  border-radius: 50%; 
+  margin-bottom: 10px;
 }

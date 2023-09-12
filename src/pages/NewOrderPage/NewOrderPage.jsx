@@ -110,7 +110,7 @@ export default function NewOrderPage( {user} ) {
       <aside className="sidebar">
         <div className="sidebar-top">
           <Logo />
-          <CategoryList categories={categoriesRef.current} activeCat={activeCat} setActiveCat={setActiveCat} />
+          <CategoryList categories={categoriesRef.current} activeCat={activeCat} setActiveCat={setActiveCat} showImages={false} />
           <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
         </div>
       </aside>
