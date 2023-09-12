@@ -9,7 +9,7 @@ import MenuList from '../../components/MenuList/MenuList';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 
-export default function NewOrderPage() {
+export default function NewOrderPage( {user} ) {
   const [menuItems, setMenuItems] = useState([]);
   const [activeCat, setActiveCat] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
@@ -69,6 +69,12 @@ export default function NewOrderPage() {
   };
 
   const handleCreateOrder = async () => {
+    if (!user) {
+      alert('You need to login or register to place an order');
+      navigate('/auth');
+      return;
+    }
+    
     try {
       const items = orderItems.map(item => ({
         item: item._id,  

@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { getAll } from '../../utilities/orders-api';
 import './OrderHistoryPage.css'; 
+import { useNavigate } from 'react-router-dom';
 
-export default function OrderHistoryPage() {
+export default function OrderHistoryPage({ user }) {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (!user) {
+      alert('You need to login or register to view your order history');
+      navigate('/auth');
+      return;
+    }
+
     const fetchOrders = async () => {
       try {
         const data = await getAll();  
@@ -20,7 +29,11 @@ export default function OrderHistoryPage() {
     };
 
     fetchOrders();
-  }, []);
+  }, [user, navigate]);
+
+  if (!user) {
+    return null;
+  }
 
   if (loading) {
     return <p>Loading...</p>;

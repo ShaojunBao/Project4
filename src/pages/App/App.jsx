@@ -14,23 +14,20 @@ export default function App() {
   return (
     <main className="App">
       <NavBar user={user} setUser={setUser} />
-      {user ? 
-        <>
-          <Routes>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route path="/orders" element={<OrderHistoryPage />} />
-          </Routes>
-        </>
-       : 
-       <>
-       <Routes>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/auth" element={<AuthPage setUser={setUser}/>}/>
-        <Route path="/orders/new" element={<NewOrderPage />} />
-       </Routes>
-       </>
-      }
+      <Routes>
+        <Route path="/" element={<HomePage user={user} setUser={{setUser}} />} />
+        <Route path="/orders/new" element={<NewOrderPage user={user}/>} />
+        <Route path="/orders" element={<OrderHistoryPage user={user} />} />
+        {user ? (
+          <>
+
+          </>
+        ) : (
+          <>
+            <Route path="/auth" element={<AuthPage setUser={setUser} />} />
+          </>
+        )}
+      </Routes>
     </main>
   );
 }

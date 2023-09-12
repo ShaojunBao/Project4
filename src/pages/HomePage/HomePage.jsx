@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import HeroSection from '../../components/HomePageComponents/Header/HeroSection/HeroSection';
+import CategoryList from '../../components/CategoryList/CategoryList';
 
-export default function HomePage() {
-  return (
-    <div className="container">
-      <h1>Welcome to the Order System</h1>
-      <p>Manage your orders efficiently and with ease.</p>
-      <div>
-        <Link to="/new-order">
-          <button type="button" className="btn btn-primary">New Order</button>
-        </Link>
-      </div>
-      <div className="mt-4">
-        <Link to="/order-history">
-          <button type="button" className="btn btn-secondary">Order History</button>
-        </Link>
-      </div>
-    </div>
-  );
-}
+export default function HomePage({user, setUser}) {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+      // Fetch categories from your API
+      fetch('API_ENDPOINT/categories')
+        .then(response => response.json())
+        .then(data => setCategories(data));
+    }, []);
+
+
+    return (
+        <div>
+          <HeroSection /> 
+          <section className="categories-section">
+            <h2>Shop by Categories</h2>
+            <CategoryList categories={categories} />
+          </section>
+        </div>
+      );
+    }
 
