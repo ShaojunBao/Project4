@@ -14,7 +14,9 @@ export default function OrderDetail({ orderItems = [], onItemQuantityChange, onI
             <ul>
               {orderItems.map((item, idx) => (
                 <li key={item._id || idx} className="item">
-                  <div className="emoji">{item.emoji}</div>
+                  <div className="image-container">
+                    <img src={item.imagePath} alt={item.name} />
+                  </div>
                   <div className="item-detail">
                     <span className="item-name">{item.name}</span>
                     <span className="item-price">${(item.price * item.quantity).toFixed(2)}</span>
