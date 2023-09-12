@@ -8,3 +8,7 @@ export async function getAll() {
 export async function getById(id) {
     return sendRequest(`${BASE_URL}/${id}`);
 }
+
+export async function getFeatured() {
+    return sendRequest(`${BASE_URL}/featured`);
+}

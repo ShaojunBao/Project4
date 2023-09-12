@@ -30,10 +30,8 @@ export default function NewOrderPage( {user} ) {
   }, []);
 
   const handleAddItemToOrder = (item) => {
-    console.log("handleAddItemToOrder called with item:", item);
     setOrderItems(prevOrderItems => {
       const itemIndex = prevOrderItems.findIndex(orderItems => orderItems._id === item._id);
-      console.log("Item index in order list:", itemIndex);
       if(itemIndex > -1) {
         const newOrderItems = [...prevOrderItems];
         newOrderItems[itemIndex].quantity += 1;
@@ -44,14 +42,9 @@ export default function NewOrderPage( {user} ) {
   };
 
   const handleItemQuantityChange = useCallback((idx, delta) => {
-    console.trace("handleItemQuantityChange called with idx and delta:", idx, delta);
     setOrderItems((prevOrderItems) => {
-      console.log('prevOrderItems', prevOrderItems);
       const newOrderItems = [...prevOrderItems];
-      newOrderItems[idx].quantity += delta;
-      
-      console.log('newOrderItems', newOrderItems);
-      
+      newOrderItems[idx].quantity += delta;      
       if (newOrderItems[idx].quantity <= 0) {
         newOrderItems.splice(idx, 1);
       }

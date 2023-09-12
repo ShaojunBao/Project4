@@ -1,0 +1,33 @@
+.featured-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 20px; 
+}
+
+.featured-item {
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
+    width: 200px; 
+    padding: 15px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    transition: transform 0.3s; 
+}
+
+.featured-item img {
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 10px 10px 0 0; 
+}
+
+.featured-item p {
+    margin: 8px 0; 
+    font-size: 0.9em; 
+}
+
+.featured-item:hover {
+    transform: translateY(-10px); 
+}
