@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { logIn } from "../../utilities/users-service";
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function LogInForm({ setUser }) {
@@ -7,6 +8,7 @@ export default function LogInForm({ setUser }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
@@ -14,6 +16,7 @@ export default function LogInForm({ setUser }) {
       const user = await logIn(formData);
       if (user) {
         setUser(user);
+        navigate('/')
       } else {
         setError('Login Failed - Check Credentials');
       }
@@ -22,6 +25,8 @@ export default function LogInForm({ setUser }) {
       setError('Login Failed - Try Again');
     }
   };
+
+ 
 
   return (
     <div className="container mt-4">
