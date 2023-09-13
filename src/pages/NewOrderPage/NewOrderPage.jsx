@@ -67,6 +67,10 @@ export default function NewOrderPage( {user} ) {
       navigate('/auth');
       return;
     }
+    if(orderItems.length === 0){
+      alert('Your cart is empty. Please add items to your cart before placing an order.');
+      return;
+    }
     
     try {
       const items = orderItems.map(item => ({
