@@ -1,4 +1,4 @@
-                            **Taste Place Restaurant**
+                            **`Taste Place Restaurant`**
 
 -Browse a list of food items with their names and prices in different food categories. 
 -Add items to the orderList.
